@@ -169,7 +169,10 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-card) 100%);
+            background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(26, 26, 26, 0.9)), url('imagenes/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             padding: 140px 20px 100px;
             text-align: center;
             margin-top: 60px;
@@ -614,7 +617,10 @@
         /* Problem Section */
         .problem {
             padding: 80px 20px;
-            background: var(--dark-card);
+            background: linear-gradient(rgba(26, 26, 26, 0.95), rgba(26, 26, 26, 0.95)), url('imagenes/automation.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
         
         .pain-points {
@@ -656,128 +662,148 @@
             padding: 80px 20px;
             background: var(--dark-bg);
         }
-        
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .package {
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 20px;
             background: var(--dark-card);
-            border-radius: 20px;
-            padding: 2.5rem;
+        }
+
+        .faq-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .faq-tab {
+            background: var(--dark-bg);
+            color: var(--text-secondary);
             border: 1px solid rgba(255, 107, 53, 0.2);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
             transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
+            font-size: 0.95rem;
+            font-weight: 600;
         }
-        
-        .package::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--primary);
-        }
-        
-        .package:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 50px var(--primary-glow);
-        }
-        
-        .package-popular {
-            border: 2px solid var(--primary);
-            transform: scale(1.05);
-            box-shadow: 0 0 40px var(--primary-glow);
-        }
-        
-        .popular-badge {
-            position: absolute;
-            top: 20px;
-            right: -35px;
+
+        .faq-tab:hover,
+        .faq-tab.active {
             background: var(--primary);
             color: var(--dark-bg);
-            padding: 5px 40px;
-            transform: rotate(45deg);
-            font-size: 0.8rem;
-            font-weight: bold;
+            border-color: var(--primary);
+            transform: translateY(-2px);
         }
-        
-        .package h3 {
-            font-size: 1.8rem;
+
+        .faq-accordion {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--dark-bg);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 15px;
             margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+
+        .faq-question:hover {
             color: var(--primary);
         }
-        
-        .package-price {
-            font-size: 2.5rem;
+
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .faq-category-badge {
+            display: inline-block;
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
             font-weight: bold;
-            color: var(--text);
             margin-bottom: 0.5rem;
         }
-        
-        .package-price span {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            font-weight: normal;
-        }
-        
-        .package-maintenance {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-size: 0.95rem;
-        }
-        
-        .package ul {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        
-        .package li {
-            padding: 0.7rem 0;
-            border-bottom: 1px solid rgba(255, 107, 53, 0.1);
-            color: var(--text-secondary);
-        }
-        
-        .package li::before {
-            content: '✓';
-            color: var(--primary);
-            font-weight: bold;
-            margin-right: 10px;
-        }
-        
-        .package-cta {
-            display: block;
+
+        .faq-cta {
             text-align: center;
-            background: var(--primary);
-            color: var(--dark-bg);
-            padding: 1rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s;
+            margin-top: 4rem;
+            padding: 3rem;
+            background: rgba(255, 107, 53, 0.1);
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
-        .package-cta:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px var(--primary-glow);
+
+        .faq-cta h3 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq-cta p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
         }
 
         /* Contact Form */
         .contact {
             padding: 80px 20px;
-            background: var(--dark-card);
+            background: var(--dark-bg);
         }
         
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
-            background: var(--dark-bg);
+            background: var(--dark-card);
             padding: 3rem;
             border-radius: 20px;
             border: 1px solid rgba(255, 107, 53, 0.2);
@@ -799,7 +825,7 @@
         .form-group select {
             width: 100%;
             padding: 1rem;
-            background: var(--dark-card);
+            background: var(--dark-bg);
             border: 1px solid rgba(255, 107, 53, 0.3);
             border-radius: 10px;
             color: var(--text);
@@ -927,10 +953,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .packages-grid {
-                grid-template-columns: 1fr;
-            }
-
             .header-nav {
                 display: none;
             }
@@ -951,6 +973,10 @@
                 width: 28px;
                 height: 28px;
             }
+
+            #calculator > .container > div:first-of-type {
+                grid-template-columns: 1fr !important;
+            }
         }
     </style>
 </head>
@@ -968,8 +994,8 @@
                 <div class="header-nav">
                     <a href="#benefits">Beneficios</a>
                     <a href="#comparison">Antes/Después</a>
-                    <a href="#technologies">Integraciones</a>
-                    <a href="#packages">Planes</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#packages">Soluciones</a>
                     <a href="#contact" class="cta-header">Agenda Demo Gratis</a>
                 </div>
             </div>
@@ -1032,6 +1058,24 @@
         <div class="container">
             <h2 class="section-title">Calcula Tu ROI</h2>
             <p class="section-subtitle">Descubre cuánto dinero y tiempo recuperarás con GymFlow</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 3rem;">
+                <div>
+                    <img src="imagenes/dashboard.jpg" alt="Dashboard GymFlow" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 60px var(--primary-glow); border: 1px solid rgba(255, 107, 53, 0.3);">
+                </div>
+                <div style="text-align: left;">
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary);">Dashboard en Tiempo Real</h3>
+                    <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Visualiza todas las métricas importantes de tu gimnasio en un solo lugar. Toma decisiones basadas en datos reales, no en suposiciones.
+                    </p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0; color: var(--text-secondary);"><span style="color: var(--primary); font-weight: bold;">✓</span> Ingresos mensuales y proyecciones</li>
+                        <li style="padding: 0.5rem 0; color: var(--text-secondary);"><span style="color: var(--primary); font-weight: bold;">✓</span> Tasa de renovación y retención</li>
+                        <li style="padding: 0.5rem 0; color: var(--text-secondary);"><span style="color: var(--primary); font-weight: bold;">✓</span> Conversión de leads por canal</li>
+                        <li style="padding: 0.5rem 0; color: var(--text-secondary);"><span style="color: var(--primary); font-weight: bold;">✓</span> Alertas automáticas de clientes en riesgo</li>
+                    </ul>
+                </div>
+            </div>
             
             <div class="calculator-container">
                 <div class="calculator-inputs">
@@ -1270,74 +1314,78 @@
         </div>
     </section>
 
-    <!-- Packages Section -->
+    <!-- Custom Solutions Section -->
     <section class="packages" id="packages">
         <div class="container">
-            <h2 class="section-title">Elige Tu Plan</h2>
-            <p class="section-subtitle">Inversión que se paga sola en 2-3 meses</p>
+            <h2 class="section-title">Soluciones Personalizadas</h2>
+            <p class="section-subtitle">Cada gimnasio es único. Tu plan también debe serlo.</p>
             
-            <div class="packages-grid">
-                <div class="package">
-                    <h3>Gimnasio Inteligente</h3>
-                    <div class="package-price">S/ 2,649<span>.00</span></div>
-                    <div class="package-maintenance">+ S/ 300/mes mantenimiento</div>
-                    <ul>
-                        <li>Recordatorios automáticos de renovación</li>
-                        <li>Bienvenida automatizada a nuevos miembros</li>
-                        <li>Sistema de seguimiento de asistencias</li>
-                        <li>Base de datos centralizada (Google Sheets/Airtable)</li>
-                        <li>WhatsApp Business API configurado</li>
-                        <li>Capacitación incluida (2 horas)</li>
-                        <li>2 ajustes incluidos primer mes</li>
-                        <li>Soporte por WhatsApp</li>
-                    </ul>
-                    <a href="https://wa.me/51900968370?text=Quiero%20información%20del%20plan%20Gimnasio%20Inteligente" class="package-cta">Solicitar Demo</a>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <div style="background: var(--dark-card); border: 1px solid rgba(255, 107, 53, 0.2); border-radius: 20px; padding: 3rem; margin-bottom: 2rem;">
+                    <div style="width: 80px; height: 80px; background: rgba(255, 107, 53, 0.1); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;">
+                        <span style="font-size: 2.5rem;">🎯</span>
+                    </div>
+                    <h3 style="color: var(--primary); font-size: 1.8rem; margin-bottom: 1rem;">Automatización a Tu Medida</h3>
+                    <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                        No creemos en planes rígidos. Analizamos tu gimnasio, identificamos tus procesos manuales y creamos un sistema de automatización diseñado específicamente para tus necesidades y presupuesto.
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                        <div style="text-align: center; padding: 1.5rem; background: rgba(255, 107, 53, 0.05); border-radius: 15px;">
+                            <div style="font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;">⚡</div>
+                            <div style="font-weight: bold; color: var(--text); margin-bottom: 0.5rem;">Setup Rápido</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">7-10 días hábiles</div>
+                        </div>
+                        <div style="text-align: center; padding: 1.5rem; background: rgba(255, 107, 53, 0.05); border-radius: 15px;">
+                            <div style="font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;">💰</div>
+                            <div style="font-weight: bold; color: var(--text); margin-bottom: 0.5rem;">Pago Flexible</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Hasta 3 cuotas sin interés</div>
+                        </div>
+                        <div style="text-align: center; padding: 1.5rem; background: rgba(255, 107, 53, 0.05); border-radius: 15px;">
+                            <div style="font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;">✓</div>
+                            <div style="font-weight: bold; color: var(--text); margin-bottom: 0.5rem;">Garantía</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">30 días satisfacción</div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" style="display: inline-block; background: var(--primary); color: var(--dark-bg); padding: 1.2rem 3rem; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: all 0.3s;">
+                        Solicita Tu Cotización Personalizada
+                    </a>
                 </div>
-                
-                <div class="package package-popular">
-                    <div class="popular-badge">MÁS POPULAR</div>
-                    <h3>Gimnasio Pro</h3>
-                    <div class="package-price">S/ 4,349<span>.00</span></div>
-                    <div class="package-maintenance">+ S/ 400/mes mantenimiento</div>
-                    <ul>
-                        <li>Todo lo del plan Inteligente</li>
-                        <li><strong>CRM de Ventas completo</strong></li>
-                        <li><strong>Sistema de Fidelización automático</strong></li>
-                        <li>Generador de rutinas personalizadas</li>
-                        <li>Planes nutricionales básicos automatizados</li>
-                        <li>Detección de inasistencias (recuperación clientes)</li>
-                        <li>Programa de referidos con tracking</li>
-                        <li>Dashboard con métricas en tiempo real</li>
-                        <li>4 ajustes incluidos primer mes</li>
-                        <li>Integración con tu sistema actual</li>
-                    </ul>
-                    <a href="https://wa.me/51900968370?text=Quiero%20información%20del%20plan%20Gimnasio%20Pro" class="package-cta">Solicitar Demo</a>
-                </div>
-                
-                <div class="package">
-                    <h3>Gimnasio 360°</h3>
-                    <div class="package-price">S/ 6,949<span>.00</span></div>
-                    <div class="package-maintenance">+ S/ 550/mes mantenimiento</div>
-                    <ul>
-                        <li>Todo lo del plan Pro</li>
-                        <li>Generador de contenido para redes (3 posts/semana)</li>
-                        <li>Automatización de cobros/recordatorios de pago</li>
-                        <li>Encuestas de satisfacción automatizadas</li>
-                        <li>Reportes automáticos mensuales al dueño</li>
-                        <li>CRM avanzado para leads de múltiples fuentes</li>
-                        <li>Mensajes de aniversario personalizados</li>
-                        <li>Sistema de puntos y recompensas</li>
-                        <li>Soporte prioritario 24/7</li>
-                        <li>Ajustes ilimitados</li>
-                    </ul>
-                    <a href="https://wa.me/51900968370?text=Quiero%20información%20del%20plan%20Gimnasio%20360" class="package-cta">Solicitar Demo</a>
+
+                <div style="background: rgba(255, 107, 53, 0.1); border: 1px solid var(--primary); border-radius: 15px; padding: 2rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">💳 Facilidades de Pago Huancayo</h3>
+                    <p style="color: var(--text); font-weight: 600; font-size: 1.1rem;">Acepta: Efectivo, Yape, Plin, Transferencia</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(255, 107, 53, 0.1); border: 1px solid var(--primary); border-radius: 15px;">
-                <h3 style="color: var(--primary); margin-bottom: 1rem;">✓ Facilidades de Pago Huancayo</h3>
-                <p style="color: var(--text); font-weight: 600; font-size: 1.1rem;">💳 Acepta: Efectivo, Yape, Plin, Transferencia</p>
-                <p style="color: var(--primary); font-weight: 700; font-size: 1.3rem; margin-top: 0.8rem;">Hasta 3 cuotas sin interés en el pago inicial</p>
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            <p class="section-subtitle">Todo lo que necesitas saber sobre GymFlow</p>
+            
+            <div class="faq-search">
+                <input type="text" id="faq-search-input" placeholder="🔍 Busca tu pregunta..." style="width: 100%; max-width: 600px; margin: 0 auto 3rem; display: block; padding: 1rem 1.5rem; background: var(--dark-bg); border: 1px solid rgba(255, 107, 53, 0.3); border-radius: 50px; color: var(--text); font-size: 1rem;">
+            </div>
+
+            <div class="faq-tabs">
+                <button class="faq-tab active" data-category="all">Todas</button>
+                <button class="faq-tab" data-category="implementacion">Implementación</button>
+                <button class="faq-tab" data-category="costos">Costos</button>
+                <button class="faq-tab" data-category="funcionalidad">Funcionalidad</button>
+                <button class="faq-tab" data-category="seguridad">Seguridad</button>
+                <button class="faq-tab" data-category="resultados">Resultados</button>
+            </div>
+
+            <div class="faq-accordion"></div>
+
+            <div class="faq-cta">
+                <h3>¿No encontraste tu respuesta?</h3>
+                <p>Escríbenos directamente y te respondemos en minutos</p>
+                <a href="https://wa.me/51900968370?text=Hola,%20tengo%20una%20pregunta%20sobre%20GymFlow" class="hero-cta">Escribir por WhatsApp</a>
             </div>
         </div>
     </section>
@@ -1348,7 +1396,9 @@
             <h2 class="section-title">Agenda Tu Demo Gratuita</h2>
             <p class="section-subtitle">20 minutos para ver cómo GymFlow transforma tu gimnasio</p>
             
-            <form class="contact-form" action="https://formspree.io/f/xyzyprov" method="POST">
+            <form class="contact-form" id="demo-form">
+                <div id="form-message" style="display: none; padding: 1rem; margin-bottom: 1rem; border-radius: 10px; text-align: center; font-weight: bold;"></div>
+                
                 <div class="form-group">
                     <label for="name">Nombre Completo *</label>
                     <input type="text" id="name" name="name" required>
@@ -1357,6 +1407,11 @@
                 <div class="form-group">
                     <label for="gym">Nombre del Gimnasio *</label>
                     <input type="text" id="gym" name="gym" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Correo Electrónico *</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
                 </div>
                 
                 <div class="form-group">
@@ -1380,7 +1435,7 @@
                     <textarea id="problem" name="problem" placeholder="Ej: Pierdo muchos clientes porque se me olvida recordarles que vence su membresía..."></textarea>
                 </div>
                 
-                <button type="submit" class="submit-btn">Agendar Demo Gratuita</button>
+                <button type="submit" class="submit-btn" id="submit-btn">Agendar Demo Gratuita</button>
             </form>
         </div>
     </section>
@@ -1397,10 +1452,10 @@
 
                 <div class="footer-section">
                     <h3>Servicios</h3>
-                    <a href="#packages">Plan Gimnasio Inteligente</a>
-                    <a href="#packages">Plan Gimnasio Pro</a>
-                    <a href="#packages">Plan Gimnasio 360°</a>
-                    <a href="#contact">Demo Personalizada</a>
+                    <a href="#packages">Soluciones Personalizadas</a>
+                    <a href="#faq">Preguntas Frecuentes</a>
+                    <a href="#contact">Demo Gratuita</a>
+                    <a href="#calculator">Calcula tu ROI</a>
                 </div>
 
                 <div class="footer-section">
@@ -1408,7 +1463,7 @@
                     <a href="#calculator">Calculadora ROI</a>
                     <a href="#comparison">Antes vs Después</a>
                     <a href="#technologies">Tecnologías</a>
-                    <a href="#packages">Precios</a>
+                    <a href="#benefits">Beneficios</a>
                 </div>
 
                 <div class="footer-section">
@@ -1435,6 +1490,226 @@
     </div>
 
     <script>
+        // FAQ Data
+        const faqData = [
+            {
+                category: 'implementacion',
+                question: '¿Cómo funciona la demo gratuita?',
+                answer: `<p>La demo es práctica y sin compromiso. Funciona así:</p>
+                <ol style="margin-left: 1.5rem; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.5rem;"><strong>Conversación de 20 min:</strong> Identificamos tu mayor dolor operativo (renovaciones, seguimiento de leads, etc.)</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Implementamos 1-2 automatizaciones reales:</strong> No es una presentación de slides, es ver el sistema funcionando en TU gimnasio</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Prueba por 7 días gratis:</strong> Ves resultados reales con tus clientes reales</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Tú decides:</strong> Si te ahorra tiempo y genera valor, continuamos. Si no, no hay presión.</li>
+                </ol>
+                <p style="margin-top: 1rem;">La mayoría de gimnasios decide continuar porque en esos 7 días recuperan 8-12 horas y ven el impacto directo.</p>`
+            },
+            {
+                category: 'implementacion',
+                question: '¿Cuánto tiempo toma implementar el sistema?',
+                answer: `<p><strong>Implementación rápida: 7-10 días hábiles.</strong> Aquí está el proceso:</p>
+                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.5rem;"><strong>Días 1-3:</strong> Configuración técnica y visita a tus instalaciones</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Días 4-6:</strong> Desarrollo personalizado y primeras pruebas</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Días 7-8:</strong> Capacitación de tu equipo (2 horas)</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Días 9-10:</strong> Ajustes finales y lanzamiento oficial</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Empiezas a ahorrar tiempo desde el día 8.</strong> Las automatizaciones comienzan a trabajar inmediatamente después de la capacitación.</p>
+                <p style="margin-top: 1rem;"><strong>Importante:</strong> Una vez que contratas, tienes acceso inmediato a soporte técnico para cambios, mejoras y resolución de problemas durante toda la implementación y después.</p>`
+            },
+            {
+                category: 'costos',
+                question: '¿Puedo pagar en cuotas?',
+                answer: `<p><strong>Sí, facilitamos el pago.</strong> El pago inicial lo divides en <strong>hasta 3 cuotas sin interés.</strong></p>
+                <p style="margin-top: 1rem;"><strong>Métodos de pago aceptados:</strong></p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Yape / Plin</li>
+                    <li>Transferencia bancaria</li>
+                    <li>Efectivo</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Requisito:</strong> Firma de contrato de venta antes de iniciar.</p>`
+            },
+            {
+                category: 'funcionalidad',
+                question: '¿El sistema funciona 24/7 incluso si mi internet se cae?',
+                answer: `<p><strong>Sí. El sistema vive en la nube, no depende de tu conexión local.</strong></p>
+                <p style="margin-top: 1rem;">Esto significa:</p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Incluso si se va tu internet del gimnasio → El sistema sigue funcionando</li>
+                    <li>Incluso si apagas tu computadora → El sistema sigue trabajando</li>
+                    <li>Incluso si cierras el gimnasio en feriados → Los recordatorios se envían igual</li>
+                    <li>Incluso si estás de vacaciones → Todo continúa automáticamente</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>El único momento que se detiene es si cancelas el servicio.</strong> Fuera de eso, trabaja 24/7 sin descanso, sin vacaciones, sin "me enfermé".</p>`
+            },
+            {
+                category: 'seguridad',
+                question: '¿Mis datos de clientes están seguros?',
+                answer: `<p><strong>Totalmente protegidos con estándares de seguridad bancaria.</strong></p>
+                <p style="margin-top: 1rem;">Medidas de seguridad:</p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>✓ Servidores cifrados (encriptación SSL de 256 bits)</li>
+                    <li>✓ Solo TÚ tienes acceso a tu información</li>
+                    <li>✓ Respaldos automáticos diarios en la nube</li>
+                    <li>✓ Cumplimiento de Ley de Protección de Datos Personales (Perú)</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Ni nosotros podemos ver tus datos de clientes</strong> sin tu autorización expresa. Todo está protegido con contraseñas que solo tú conoces.</p>`
+            },
+            {
+                category: 'resultados',
+                question: '¿Cuánto tiempo toma ver resultados?',
+                answer: `<p><strong>Resultados inmediatos y medibles.</strong></p>
+                <p style="margin-top: 1rem;"><strong>Día 1-7:</strong> Dejas de enviar recordatorios manuales → Recuperas 2-3 horas/semana</p>
+                <p style="margin-top: 0.5rem;"><strong>Semana 2-4:</strong> Sistema detecta clientes por vencer → Aumenta renovaciones a tiempo en 20-30%</p>
+                <p style="margin-top: 0.5rem;"><strong>Mes 1 completo:</strong></p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>40+ horas recuperadas</li>
+                    <li>0% clientes olvidados</li>
+                    <li>20-30% más conversión de leads</li>
+                    <li>S/ 1,500-3,000 en ingresos recuperados (promedio)</li>
+                </ul>`
+            }
+        ];
+
+        // Initialize FAQ
+        function initFAQ() {
+            const accordion = document.querySelector('.faq-accordion');
+            const searchInput = document.getElementById('faq-search-input');
+            const tabs = document.querySelectorAll('.faq-tab');
+            
+            let currentCategory = 'all';
+            
+            function renderFAQ(filter = '') {
+                const filteredData = faqData.filter(item => {
+                    const matchesCategory = currentCategory === 'all' || item.category === currentCategory;
+                    const matchesSearch = filter === '' || 
+                        item.question.toLowerCase().includes(filter.toLowerCase()) ||
+                        item.answer.toLowerCase().includes(filter.toLowerCase());
+                    return matchesCategory && matchesSearch;
+                });
+                
+                accordion.innerHTML = filteredData.map((item, index) => `
+                    <div class="faq-item" data-index="${index}">
+                        <div class="faq-question">
+                            <div>
+                                <div class="faq-category-badge">${getCategoryName(item.category)}</div>
+                                <div>${item.question}</div>
+                            </div>
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">${item.answer}</div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Add click events
+                document.querySelectorAll('.faq-question').forEach(question => {
+                    question.addEventListener('click', function() {
+                        const item = this.parentElement;
+                        const isActive = item.classList.contains('active');
+                        
+                        // Close all items
+                        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                        
+                        // Open clicked item if it wasn't active
+                        if (!isActive) {
+                            item.classList.add('active');
+                        }
+                    });
+                });
+            }
+            
+            function getCategoryName(category) {
+                const names = {
+                    'implementacion': 'Implementación',
+                    'costos': 'Costos',
+                    'funcionalidad': 'Funcionalidad',
+                    'seguridad': 'Seguridad',
+                    'resultados': 'Resultados'
+                };
+                return names[category] || category;
+            }
+            
+            // Tab filters
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    currentCategory = this.dataset.category;
+                    renderFAQ(searchInput.value);
+                });
+            });
+            
+            // Search
+            searchInput.addEventListener('input', function() {
+                renderFAQ(this.value);
+            });
+            
+            // Initial render
+            renderFAQ();
+        }
+
+        // Form submission with Google Sheets integration
+        document.getElementById('demo-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const formMessage = document.getElementById('form-message');
+            const originalBtnText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                gym: document.getElementById('gym').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                members: document.getElementById('members').value,
+                problem: document.getElementById('problem').value,
+                timestamp: new Date().toLocaleString('es-PE', { timeZone: 'America/Lima' })
+            };
+            
+            try {
+                // IMPORTANTE: Reemplaza esta URL con tu Google Apps Script Web App URL
+                const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx0_J1mTziBUXJRPnW7uj4Nr4zQFTWmbLDcMqQIW3mWU1UGS50OdZrKTY1WtfsowIh3/exec';
+                
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                // Show success message
+                formMessage.style.display = 'block';
+                formMessage.style.background = 'rgba(76, 175, 80, 0.2)';
+                formMessage.style.color = '#4CAF50';
+                formMessage.style.border = '1px solid #4CAF50';
+                formMessage.textContent = '✓ ¡Demo agendada! Te contactaremos en las próximas 24 horas.';
+                
+                // Reset form
+                document.getElementById('demo-form').reset();
+                
+                // Scroll to message
+                formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+            } catch (error) {
+                console.error('Error:', error);
+                formMessage.style.display = 'block';
+                formMessage.style.background = 'rgba(244, 67, 54, 0.2)';
+                formMessage.style.color = '#f44336';
+                formMessage.style.border = '1px solid #f44336';
+                formMessage.textContent = '✗ Hubo un error. Por favor escríbenos directamente por WhatsApp.';
+            } finally {
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+
         // ROI Calculator
         function calculateROI() {
             const members = parseInt(document.getElementById('members').value) || 0;
@@ -1461,6 +1736,7 @@
             resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1474,14 +1750,10 @@
             });
         });
 
-        const form = document.querySelector('.contact-form');
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                const submitBtn = form.querySelector('.submit-btn');
-                submitBtn.textContent = 'Enviando...';
-                submitBtn.disabled = true;
-            });
-        }
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initFAQ();
+        });
     </script>
 </body>
 </html>
